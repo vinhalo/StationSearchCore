@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var alphabet = new List<char> { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ' };
+}
+
+<div class="jumbotron">
+    <h1>Train Station Finder</h1>
+    <p class="lead">This website allows you to find train stations.</p>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="row">
+            <input type="search" id="stationName" style="width: 100%" placeholder="Enter Station Name..." />
+        </div>
+        <div class="row">
+            <table class="keyboard">
+                <tbody>
+                    @{
+                        var index = 0;
+                        for (int i = 0; i < 6; i++)
+                        {
+                            <tr>
+                                @for (int j = 0; j < 5; j++)
+                                {
+                                    if (index == alphabet.Count)
+                                    {
+                                        <td><button class="backspaceBtn">@("<<")</button></td>
+                                    }
+                                    else if (index > alphabet.Count)
+                                    {
+                                        <td></td>
+                                    }
+                                    else
+                                    {
+                                        <td><button class="btn">@alphabet[index]</button></td>
+                                    }
+                                    index++;
+                                }
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="row">
+            <strong>Search Results:</strong>
+        </div>
+        <div class="row">
+            <table id="searchResults">
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/site.js" asp-append-version="true"></script>

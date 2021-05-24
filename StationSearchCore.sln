@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StationSearchCore.Service", "StationSearchCore.Service\StationSearchCore.Service.csproj", "{F3959C37-1650-489E-9513-EF6E6E0AED16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StationSearchCore.Web", "StationSearchCore.Web\StationSearchCore.Web.csproj", "{C7AB31BE-A869-4CAD-B249-86B14FE305F7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F3959C37-1650-489E-9513-EF6E6E0AED16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3959C37-1650-489E-9513-EF6E6E0AED16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3959C37-1650-489E-9513-EF6E6E0AED16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3959C37-1650-489E-9513-EF6E6E0AED16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7AB31BE-A869-4CAD-B249-86B14FE305F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7AB31BE-A869-4CAD-B249-86B14FE305F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7AB31BE-A869-4CAD-B249-86B14FE305F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7AB31BE-A869-4CAD-B249-86B14FE305F7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8333CE5E-CB2D-4B38-8405-92C4BBD617DA}
+	EndGlobalSection
+EndGlobal
