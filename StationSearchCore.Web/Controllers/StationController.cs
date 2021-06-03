@@ -25,9 +25,13 @@ namespace StationSearchCore.Web.Controllers
 
             var stations = await LookupService.GetAllStartingWithAsync(filter);
 
-            var nextPossibleChars = stations.Where(station => station.Length > filter.Length).Select(station => station[filter.Length]).OrderBy(x => x).Distinct();
+            // This should go inside a domain NextCharService so that service can be tested independently and this endpoint can be thinner.
+            var nextPossibleChars = stations
+                .Select(station => station[filter.Length])
+                .OrderBy(x => x)
+                .Distinct();
 
-            return new StationSearchResult(nextPossibleChars, stations.OrderBy(x => x));
+            return new StationSearchResult(nextPossibleChars, stations);
         }
     }
 }

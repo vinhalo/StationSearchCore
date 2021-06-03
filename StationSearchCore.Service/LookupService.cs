@@ -1,5 +1,6 @@
 ﻿using StationSearchCore.Domain.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace StationSearchCore.Service
@@ -12,10 +13,15 @@ namespace StationSearchCore.Service
         public LookupService(IPrefixTree prefixTree) =>
             PrefixTree = prefixTree;
 
-        public async Task<IEnumerable<string>> GetAllStartingWithAsync(string name) =>
-            await PrefixTree.FindAsync(name);
+        public async Task<IEnumerable<string>> GetAllStartingWithAsync(string name)
+        {
+            var stations = await PrefixTree.FindAsync(name); 
+            return stations.OrderBy(x => x);
+        }
 
-        public IEnumerable<string> GetAllStartingWith(string name) =>
-            PrefixTree.Find(name);
+        public IEnumerable<string> GetAllStartingWith(string name)
+        {
+            return PrefixTree.Find(name).OrderBy(x => x);
+        }
     }
 }
