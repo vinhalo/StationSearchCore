@@ -60,13 +60,13 @@ function changeStationNameFilterText(newfilter) {
 
     Array.from(document.getElementsByClassName('btn')).forEach(function (el) {
         el.addEventListener('click', function () {
-            var currentText = stationName.value;
+            const currentText = stationName.value;
             changeStationNameFilterText(currentText + this.textContent);
         });
     });
 
     document.querySelector('.backspaceBtn').addEventListener('click', function () {
-        var currentText = stationName.value;
+        const currentText = stationName.value;
         changeStationNameFilterText(currentText.substring(0, currentText.length - 1));
     });
 
