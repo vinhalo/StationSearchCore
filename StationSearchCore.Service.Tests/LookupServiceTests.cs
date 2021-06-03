@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Moq;
 using NUnit.Framework;
+using StationSearchCore.Domain.Interfaces;
+using System.Collections.Generic;
 
 namespace StationSearchCore.Service.Tests
 {
@@ -11,11 +12,13 @@ namespace StationSearchCore.Service.Tests
         public void SearchForXShouldReturnExpectedResults()
         {
             // arrange
-            var s = new LookupService();
             var expected = new List<string>
             {
                 "ZZZ"
             };
+            var tree = new Mock<IPrefixTree>();
+            tree.Setup(x => x.Find(It.IsAny<string>())).Returns(expected);
+            var s = new LookupService(tree.Object);
 
             // act
             var r = s.GetAllStartingWith("Z");
