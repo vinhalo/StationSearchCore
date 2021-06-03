@@ -23,5 +23,14 @@ namespace StationSearchCore.Service
         {
             return PrefixTree.Find(name).OrderBy(x => x);
         }
+
+        public IEnumerable<char> NextPossibleChars(IEnumerable<string> stations, string filter)
+        {
+            return stations
+                .Where(x => x.Length > filter.Length)
+                .Select(station => station[filter.Length])
+                .OrderBy(x => x)
+                .Distinct();
+        }
     }
 }

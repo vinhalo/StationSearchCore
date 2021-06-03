@@ -7,8 +7,8 @@
         })
         .then(function (data) {
             Array.from(document.getElementsByClassName('btn')).forEach(function (btn) {
-                setStationButtonEnableness(btn, data.nextPossibleCharacters);
-
+                enableStationButtons(btn, data.nextPossibleCharacters);
+                enableBackspaceButton(data.stations);
                 clearSearcResultItems();
 
                 data.stations.forEach(function (s) {
@@ -18,17 +18,23 @@
         });
 }
 
-const setStationButtonEnableness = (btn, nextPossibleCharacters) => {
+const enableStationButtons = (btn, nextPossibleCharacters) => {
     const found = nextPossibleCharacters.includes(btn.innerHTML);
     btn.disabled = found == false;
-}
+};
+
+const enableBackspaceButton = (stations) => {
+    const hasStations = stations.length > 0;
+    const backspaceButton = document.querySelector('.backspaceBtn');
+    backspaceButton.disabled = hasStations == false;
+};
 
 const clearSearcResultItems = () =>
     document.querySelector('#searchResults > tbody').innerHTML = '';
 
 const addSearchResultItem = (s) => {
-    var row = document.createElement('tr');
-    var cell = document.createElement('td');
+    let row = document.createElement('tr');
+    let cell = document.createElement('td');
     cell.innerHTML = s; // still not happy with manipulating innerHTML
     row.appendChild(cell);
     document.querySelector('#searchResults > tbody').appendChild(row);
@@ -38,9 +44,6 @@ function changeStationNameFilterText(newfilter) {
     const stationName = document.getElementById('stationName');
     stationName.value = newfilter;
     stationName.dispatchEvent(new Event('change'));
-    const hasStations = stationName.value.length > 0;
-    const backspaceButton = document.querySelector('.backspaceBtn');
-    backspaceButton.disabled = hasStations;
 }
 
 (function () {

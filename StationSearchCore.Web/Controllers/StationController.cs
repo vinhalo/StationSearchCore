@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StationSearchCore.Domain.Interfaces;
 using StationSearchCore.Web.Dtos;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace StationSearchCore.Web.Controllers
@@ -24,12 +23,7 @@ namespace StationSearchCore.Web.Controllers
             filter = filter.Replace("\"", "");
 
             var stations = await LookupService.GetAllStartingWithAsync(filter);
-
-            // This should go inside a domain NextCharService so that service can be tested independently and this endpoint can be thinner.
-            var nextPossibleChars = stations
-                .Select(station => station[filter.Length])
-                .OrderBy(x => x)
-                .Distinct();
+            var nextPossibleChars = LookupService.NextPossibleChars(stations, filter);
 
             return new StationSearchResult(nextPossibleChars, stations);
         }
