@@ -23,7 +23,6 @@ namespace StationSearchCore.Web
 
             // Should go inside an extention method on IServiceCollection called ~AddDomainServices()
             services.AddTransient<ILookupService, LookupService>();
-            services.AddTransient<IPrefixTree, PrefixTree>();
             services.AddTransient<IStationRepository, StationRepository>();
         }
 

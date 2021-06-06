@@ -16,9 +16,9 @@ namespace StationSearchCore.Service.Tests
             {
                 "ZZZ"
             };
-            var tree = new Mock<IPrefixTree>();
-            tree.Setup(x => x.Find(It.IsAny<string>())).Returns(expected);
-            var s = new LookupService(tree.Object);
+            var repo = new Mock<IStationRepository>();
+            repo.Setup(x => x.GetAll()).Returns(expected);
+            var s = new LookupService(repo.Object);
 
             // act
             var r = s.GetAllStartingWith("Z");

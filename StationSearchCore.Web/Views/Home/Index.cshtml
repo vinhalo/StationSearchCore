@@ -1,6 +1,40 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Home Page";
-    var alphabet = new List<char> { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ' };
+    var alphabet = Enumerable
+        .Range((int)'A', 26)
+        .Select(x => (((char)x).ToString(), "btn"))
+        .Append((" ", "btn"))
+        .Append(("<<", "backspaceBtn"))
+        .Select((x, i) => new { Value = x, Index = i })
+        .GroupBy(x => x.Index / 5, x => x.Value)
+        .ToList();
+
+    void renderTable(IEnumerable<IGrouping<int, (string, string)>> alphabet)
+    {
+        foreach (var col in alphabet)
+        {
+            <tr>
+                @foreach (var cell in col)
+                {
+                    renderCell(cell);
+                }
+            </tr>
+        }
+    }
+
+    void renderCell((string alpha, string className) cell)
+    {
+        if (string.IsNullOrEmpty(cell.className))
+        {
+            <td></td>
+        }
+        else
+        {
+            var alpha = cell.alpha == " " ? "space" : cell.alpha;
+            <td><button class=@cell.className data-alpha=@alpha>@cell.alpha</button></td>
+        }
+    }
 }
 
 <div class="jumbotron">
@@ -16,28 +50,7 @@
             <table class="keyboard">
                 <tbody>
                     @{
-                        var index = 0;
-                        for (int i = 0; i < 6; i++)
-                        {
-                            <tr>
-                                @for (int j = 0; j < 5; j++)
-                                {
-                                    if (index == alphabet.Count)
-                                    {
-                                        <td><button class="backspaceBtn">@("<<")</button></td>
-                                    }
-                                    else if (index > alphabet.Count)
-                                    {
-                                        <td></td>
-                                    }
-                                    else
-                                    {
-                                        <td><button class="btn">@alphabet[index]</button></td>
-                                    }
-                                    index++;
-                                }
-                            </tr>
-                        }
+                        renderTable(alphabet);
                     }
                 </tbody>
             </table>
@@ -55,4 +68,5 @@
     </div>
 </div>
 
-<script src="~/js/site.js" asp-append-version="true"></script>
+<div></div>
+<script src="~/js/site.js" asp-append-version="true" type="module"></script>
