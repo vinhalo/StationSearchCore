@@ -1,34 +1,38 @@
 ﻿using StationSearchCore.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace StationSearchCore.Service
 {
-    // After all this refactoring, it is revealed that LookupService is just PrefixTree
     public class LookupService : ILookupService
     {
-        private IPrefixTree PrefixTree { get; }
+        private IStationRepository StationRepository { get; }
 
-        public LookupService(IPrefixTree prefixTree) =>
-            PrefixTree = prefixTree;
+        public LookupService(IStationRepository stationRepository) =>
+            StationRepository = stationRepository;
 
-        public async Task<IEnumerable<string>> GetAllStartingWithAsync(string name)
+        public Task<IEnumerable<string>> GetAllStartingWithAsync(string name)
         {
-            var stations = await PrefixTree.FindAsync(name); 
-            return stations.OrderBy(x => x);
+            return Task.FromResult(GetAllStartingWith(name)); 
         }
 
         public IEnumerable<string> GetAllStartingWith(string name)
         {
-            return PrefixTree.Find(name).OrderBy(x => x);
+            name = name?.ToUpper() ?? throw new ArgumentNullException(nameof(name));
+
+            return StationRepository
+                .GetAll()
+                .Where(x => x.ToUpper().StartsWith(name))
+                .OrderBy(x => x);
         }
 
         public IEnumerable<char> NextPossibleChars(IEnumerable<string> stations, string filter)
         {
             return stations
                 .Where(x => x.Length > filter.Length)
-                .Select(station => station[filter.Length])
+                .Select(station => station.Skip(filter.Length).Take(1).First())
                 .OrderBy(x => x)
                 .Distinct();
         }
