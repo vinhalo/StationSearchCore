@@ -1,4 +1,4 @@
-﻿import { makeAutoObservable, autorun } from 'https://cdn.skypack.dev/mobx';
+﻿import { makeAutoObservable, autorun } from 'https://cdn.skypack.dev/mobx@~6.3.0';
 
 function makeSearchStore() {
     // Application state
@@ -39,7 +39,7 @@ const searchStore = makeSearchStore(); // create singleton store
 
 const enableBackspaceButton = (hasStations) => {
     const backspaceButton = document.querySelector('.backspaceBtn');
-    backspaceButton.disabled = hasStations == false;
+    backspaceButton.disabled = hasStations === false;
 };
 
 const clearSearchResultItems = () =>
@@ -54,9 +54,9 @@ const addSearchResultItem = (s) => {
 };
 
 const enableCharacters = ([alpha, enabled]) => {
-    const a = alpha == " " ? "space" : alpha;
+    const a = alpha === " " ? "space" : alpha;
     const btn = document.querySelector(`[data-alpha="${a}"]`)
-    btn.disabled = enabled == false;
+    btn.disabled = enabled === false;
 }
 
 // Hook up reaction to changes in searchStore observables
