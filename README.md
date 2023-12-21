@@ -6,11 +6,11 @@ This is a badly written application which follows none of the practices we would
 
 Areas to consider:
 
-Clean code!
-DI
-Data storage and patterns
-Backend code structure and logic
-Frontend code structure
-Unit testing (TDD/BDD)
-Performance concerns
-Identify needed changes to make it production ready
+- Clean code!
+- DI
+- Data storage and patterns
+- Backend code structure and logic
+- Frontend code structure
+- Unit testing (TDD/BDD)
+- Performance concerns
+- Identify needed changes to make it production ready
