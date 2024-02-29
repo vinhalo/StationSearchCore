@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StationSearchCore.Service", "StationSearchCore.Service\StationSearchCore.Service.csproj", "{F3959C37-1650-489E-9513-EF6E6E0AED16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StationSearchCore.Service", "StationSearchCore.Service\StationSearchCore.Service.csproj", "{F3959C37-1650-489E-9513-EF6E6E0AED16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StationSearchCore.Web", "StationSearchCore.Web\StationSearchCore.Web.csproj", "{C7AB31BE-A869-4CAD-B249-86B14FE305F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StationSearchCore.Web", "StationSearchCore.Web\StationSearchCore.Web.csproj", "{C7AB31BE-A869-4CAD-B249-86B14FE305F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StationSearchCore.Service.Tests", "StationSearchCore.Service.Tests\StationSearchCore.Service.Tests.csproj", "{1A808898-7026-483D-B73E-26A99EE079B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StationSearchCore.Service.Tests", "StationSearchCore.Service.Tests\StationSearchCore.Service.Tests.csproj", "{1A808898-7026-483D-B73E-26A99EE079B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
